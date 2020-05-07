@@ -59,7 +59,8 @@ public class TestInsurancecomp extends TestBase{
  		Assert.assertNotNull(driver.findElement(By.xpath("(//*[@id='reviews-section']/div[1]/div[3]/review-star/div//*[name()='svg']//*[name()='path' and @fill = 'none'])["+data.num+"]")));
 	}
 	
-//	Write Review method allows the 
+//	Submit Review method allows the user to select rating stars, click on it. 
+//	Then selects the policy dropdown value and review content is entered and clicks on Submit button
 	@Test (priority=2)
 	public void SubmitReview(){
 		String policyDropdownValue = prop.getProperty("policydropdownval");
@@ -74,12 +75,11 @@ public class TestInsurancecomp extends TestBase{
 	
 //	Below test validates the review submitted by the user
 //	- Navigates to the profile page of the user
-//	- And checks if there is a review available for the Test Insurance Company 
-	@Test (dependsOnMethods={"SubmitReview"})
+//	- And checks if there is a review available for the Test Insurance Company (or for any clientname)
+	@Test (priority = 3)
 	public void ProfileReviewchk(){
 		profilepage = projhomepage.NavtoProfilepage();
-//		Assert.assertNotNull(profilepage.Review());
-		Assert.assertNotNull(profilepage.Review(), "REVIEW not found for Test Insurance Company");
+		Assert.assertNotNull(profilepage.Review(), "REVIEW not found for"+prop.getProperty("clientname"));
 		
 	}
 	

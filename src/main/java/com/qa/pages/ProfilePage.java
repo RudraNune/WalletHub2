@@ -13,14 +13,15 @@ public class ProfilePage extends TestBase{
 		this.driver = driver;
 	}
 	
-//	Below method returns a WebElement 
+//	Below method returns a WebElement if there is review available for the client mentioned 
 	public WebElement Review(){
+		String clientname = prop.getProperty("clientname");
 		WebElement recommendation = null;
 		try {
-			recommendation = driver.findElement(By.xpath("//*[@class='pr-ct-box pr-rec']//a[text()='Test Insurance Company']"));
+			recommendation = driver.findElement(By.xpath("//*[@class='pr-ct-box pr-rec']//a[text()='"+clientname+"']"));
 		} catch (NoSuchElementException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			return null;
 		}
 		return recommendation;
