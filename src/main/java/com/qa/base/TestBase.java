@@ -14,7 +14,7 @@ public class TestBase {
 	public WebDriver driver;
 	public Properties prop;
 
-	// TestBase constructor loads the properties file
+	// TestBase constructor loads the properties file - change
 	public TestBase() {
 		prop = new Properties();
 		try {
