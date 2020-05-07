@@ -5,9 +5,7 @@
     <classes>
       <class name="com.qa.testcases.TestInsurancecomp">
         <methods>
-          <include name="SubmitReview"/>
           <include name="ProfileReviewchk"/>
-          <include name="RatingstarsLitup"/>
           <include name="Setup"/>
           <include name="afterstate"/>
         </methods>
