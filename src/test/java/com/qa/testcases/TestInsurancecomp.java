@@ -53,15 +53,15 @@ public class TestInsurancecomp extends TestBase{
 	
 //	RatingstarsLitup method asserts if each of the 5 stars are highlighted/litup when mouse hovers over them
 //	Test data is iterated over the object provided by Dataprovider
-	@Test(dataProvider="AvailableRatings", enabled = true)
+	@Test(dataProvider="AvailableRatings", priority=1)
 	public void RatingstarsLitup(Stardataobj data){
 		projhomepage.HoveroverReviewstars(Integer.parseInt(prop.getProperty(data.str)));
  		Assert.assertNotNull(driver.findElement(By.xpath("(//*[@id='reviews-section']/div[1]/div[3]/review-star/div//*[name()='svg']//*[name()='path' and @fill = 'none'])["+data.num+"]")));
 	}
 	
 //	Write Review method allows the 
-	@Test (enabled=true)
-	public void WriteReview(){
+	@Test (priority=2)
+	public void SubmitReview(){
 		String policyDropdownValue = prop.getProperty("policydropdownval");
 		String ReviewContent = prop.getProperty("reviewcontent");
 		Integer Starstobeselected =  Integer.parseInt(prop.getProperty("fourstars"));
@@ -75,7 +75,7 @@ public class TestInsurancecomp extends TestBase{
 //	Below test validates the review submitted by the user
 //	- Navigates to the profile page of the user
 //	- And checks if there is a review available for the Test Insurance Company 
-	@Test (enabled=true)
+	@Test (dependsOnMethods={"SubmitReview"})
 	public void ProfileReviewchk(){
 		profilepage = projhomepage.NavtoProfilepage();
 //		Assert.assertNotNull(profilepage.Review());
